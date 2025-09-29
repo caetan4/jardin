@@ -14,7 +14,14 @@ window.onload = function() {
 
   const cx = size / 2;
   const cy = size / 2;
-
+// --- Círculo ---
+  ctx.beginPath();
+  ctx.arc(cx + 15, cy - 100, 200, 0, Math.PI * 2);
+  ctx.fillStyle = "yellow";
+  ctx.fill();
+  ctx.strokeStyle = "orange";
+  ctx.lineWidth = 3;
+  ctx.stroke();
   // --- Rectángulos ---
   ctx.fillStyle = "rgba(0, 150, 255, 0.5)";
   ctx.fillRect(50, 50, 200, 120);
@@ -24,16 +31,25 @@ window.onload = function() {
 
   // --- Círculo ---
   ctx.beginPath();
-  ctx.arc(cx + 150, cy - 100, 60, 0, Math.PI * 2);
-  ctx.fillStyle = "yellow";
+  ctx.arc(cx + 15, cy - 100, 20, 0, Math.PI * 2);
+  ctx.arc(cx - 100, cy - 100, 20, 0, Math.PI * 2);
+  ctx.fillStyle = "black";
   ctx.fill();
-  ctx.strokeStyle = "orange";
+  ctx.strokeStyle = "black";
   ctx.lineWidth = 3;
   ctx.stroke();
-
+ 
+  
   // --- Semicírculo ---
   ctx.beginPath();
   ctx.arc(cx - 150, cy - 50, 70, Math.PI, 0, false); // semicírculo arriba
+  ctx.fillStyle = "limegreen";
+  ctx.fill();
+  ctx.strokeStyle = "darkgreen";
+  ctx.stroke();
+
+    ctx.beginPath();
+  ctx.arc(cx - 150, cy - 50, 0, Math.PI, 0, false); // semicírculo arriba
   ctx.fillStyle = "limegreen";
   ctx.fill();
   ctx.strokeStyle = "darkgreen";
