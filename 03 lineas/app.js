@@ -30,8 +30,8 @@ window.onload = function () {
   for (let i = 0; i <= numLinesX; i++) {
     const x = i * spacingX;
     ctx.beginPath();
-    ctx.moveTo(x, 300);
-    ctx.lineTo(x, size-300);
+    ctx.moveTo(x+90, 300);
+    ctx.lineTo(x+90, size-300);
     ctx.stroke();
     ctx.lineWidth = 9;
   }
