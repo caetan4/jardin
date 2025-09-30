@@ -81,8 +81,8 @@ scene.add(frontLight);
 function animate() {
   requestAnimationFrame(animate);
 
-  scene.rotation.y += 0.002; // rotación lenta
-  scene.rotation.x += 0.001;
+ scene.rotation.y += 0.001; // rotación lenta
+  scene.rotation.x += 0.0001;
 
   renderer.render(scene, camera);
 }

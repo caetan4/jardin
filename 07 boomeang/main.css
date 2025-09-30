@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.canvas {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0c2d48; /* fondo tipo cielo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Boomerang */
+.boomerang {
+  position: relative;
+  width: 100px;
+  height: 20px;
+  background: #940f0f;
+  border-radius: 10px;
+  transform-origin: left center;
+}
+
+
+.boomerang::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 20px;
+  background: #ff0033;
+  border-radius: 10px;
+  transform: rotate(45deg);
+  top: -35px;
+  left: 0;
+}
