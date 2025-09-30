@@ -1,73 +1,98 @@
-// app.js
-import * as THREE from "three";
+console.log("Sesion: Grid 3D con BoxGeometry");
 
-window.onload = function () {
-  // === Escena básica ===
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    60,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
-  camera.position.set(0, 0, 150);
+// 1. Definir nuestro canvas
+const canvas = document.getElementById("lienzo");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+// 2. Escena
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x000000); // Fondo negro en la escena
 
-  // --- Parámetros ---
-  const size = 100;          // Tamaño base (como tu canvas 1000 pero reducido a escala 3D)
-  const numLinesX = 32;      // Número de líneas verticales
-  const numLinesY = 62;      // Número de líneas horizontales
-  const spacingX = size / numLinesX;
-  const spacingY = size / numLinesY;
+// 3. Cámara
+const camera = new THREE.PerspectiveCamera(
+  55,
+  canvas.width / canvas.height,
+  0.1,
+  1000
+);
+camera.position.z = 80;
 
-  const lineWidth = 0.5;     // Grosor de las barras
-  const lineDepth = 1;       // Profundidad de las barras
+// 4. Renderer
+const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+renderer.setSize(canvas.width, canvas.height);
 
-  // Materiales con gradientes simulados
-  const materialVertical = new THREE.MeshBasicMaterial({ color: 0xffd24b });
-  const materialHorizontal = new THREE.MeshBasicMaterial({ color: 0x181c72 });
 
-  // === Líneas verticales ===
-  for (let i = 0; i <= numLinesX; i++) {
-    const x = i * spacingX - size / 2;
+const size = 100;         
+const numLinesX = 32;      // Númd líneas verticales
+const numLinesY = 62;      // Núm líneas horizontales
+const spacingX = size / numLinesX;
+const spacingY = size / numLinesY;
 
-    const geometry = new THREE.BoxGeometry(lineWidth, size * 0.4, lineDepth);
-    const mesh = new THREE.Mesh(geometry, materialVertical);
-    mesh.position.set(x, 0, 0);
-    scene.add(mesh);
-  }
+const lineWidth = 0.5;     
+const lineDepth = 1;       
 
-  // === Líneas horizontales ===
-  for (let j = 0; j <= numLinesY; j++) {
-    const y = j * spacingY - size / 2;
+// Materiales
+const materialVertical = new THREE.MeshPhongMaterial({
+  flatShading: true,
+  color: "#ffd24b",
+  shininess: 100
+});
 
-    const geometry = new THREE.BoxGeometry(size, lineWidth, lineDepth);
-    const mesh = new THREE.Mesh(geometry, materialHorizontal);
-    mesh.position.set(0, y, 0);
-    scene.add(mesh);
-  }
+const materialHorizontal = new THREE.MeshPhongMaterial({
+  flatShading: true,
+  color: "#181c72",
+  shininess: 100
+});
 
-  // Luz para darle un poco más de presencia
-  const light = new THREE.PointLight(0xffffff, 1);
-  light.position.set(50, 50, 100);
-  scene.add(light);
+// === Líneas verticales ===
+for (let i = 0; i <= numLinesX; i++) {
+  const x = i * spacingX - size / 2;
 
-  // Animación
-  function animate() {
-    requestAnimationFrame(animate);
-    scene.rotation.y += 0.002; // rotación lenta para apreciarlo
-    renderer.render(scene, camera);
-  }
+  const geometry = new THREE.BoxGeometry(lineWidth, size * 0.4, lineDepth);
+  const mesh = new THREE.Mesh(geometry, materialVertical);
+  mesh.position.set(x, 0, 10);
+  scene.add(mesh);
+}
 
-  animate();
+// === Líneas horizontales ===
+for (let j = 0; j <= numLinesY; j++) {
+  const y = j * spacingY - size / 2;
 
-  // Ajustar a pantalla
-  window.addEventListener("resize", () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-  });
-};
+  const geometry = new THREE.BoxGeometry(size, lineWidth, lineDepth);
+  const mesh = new THREE.Mesh(geometry, materialHorizontal);
+  mesh.position.set(0, y, 0);
+  scene.add(mesh);
+}
+
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambientLight);
+
+const topLight = new THREE.PointLight("#ffffff", 2, 300);
+topLight.position.set(0, 50, 50);
+scene.add(topLight);
+
+const frontLight = new THREE.PointLight("#bfdc93", 1.5, 250);
+frontLight.position.set(30, 20, 40);
+scene.add(frontLight);
+
+// 5. Animación
+function animate() {
+  requestAnimationFrame(animate);
+
+  scene.rotation.y += 0.002; // rotación lenta
+  scene.rotation.x += 0.001;
+
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  renderer.setSize(canvas.width, canvas.height);
+  camera.aspect = canvas.width / canvas.height;
+  camera.updateProjectionMatrix();
+});
+
