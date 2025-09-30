@@ -67,8 +67,6 @@ mesh5.position.y = 1;
 mesh5.position.z = -6;
 
 
-
-
 //Renderer
 const renderer = new THREE.WebGLRenderer({canvas: canvas});
 renderer.setSize(canvas.width, canvas.height);
@@ -86,7 +84,7 @@ function animate() {
  }
  animate();
 
- const topLight = new THREE.PointLight("#506b04ff", 100, 100);
+const topLight = new THREE.PointLight("#506b04ff", 100, 100);
 topLight.position.y = 5;
 scene.add(topLight);
 
