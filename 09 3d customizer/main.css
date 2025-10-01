@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#lienzo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #628689;
+}
+
+/* Botón visible con interacción */
+#cambiarColor {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 140px;
+  height: 50px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#cambiarColor:hover {
+  background-color: #1e7e34;
+}
+
+#cambiarColor:active {
+  background-color: #155724;
+}
