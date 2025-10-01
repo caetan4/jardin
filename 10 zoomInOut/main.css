@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#lienzo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #628689;
+}
+
+/* Botones visibles y cuadrados */
+button {
+  position: absolute;
+  width: 140px;
+  height: 50px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Botón cambiar color */
+#cambiarColor {
+  top: 20px;
+  left: 20px;
+  background-color: #28a745;
+}
+#cambiarColor:hover { background-color: #1e7e34; }
+#cambiarColor:active { background-color: #155724; }
+
+/* Botón Zoom In */
+#zoomIn {
+  top: 80px;
+  left: 20px;
+  background-color: #007bff;
+}
+#zoomIn:hover { background-color: #0056b3; }
+#zoomIn:active { background-color: #004085; }
+
+/* Botón Zoom Out */
+#zoomOut {
+  top: 140px;
+  left: 20px;
+  background-color: #a39058;
+}
+#zoomOut:hover { background-color: #e0a800; }
+#zoomOut:active { background-color: #c69500; }
