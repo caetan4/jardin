@@ -13,11 +13,11 @@ const camera = new THREE.PerspectiveCamera(55, canvas.width / canvas.height, 0.1
 camera.position.z = 40;
 
 // Luces
-const light1 = new THREE.PointLight("#b6b6b6ff", 90, 100);
+const light1 = new THREE.PointLight("#b6b6b6", 900, 100);
 light1.position.set(-1,- 1, 10);
 scene.add(light1);
 
-const light2 = new THREE.AmbientLight("#090909ff");
+const light2 = new THREE.AmbientLight("#d7c0c0",10,80);
 scene.add(light2);
 
 // Material base

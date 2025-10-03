@@ -41,7 +41,7 @@ meshTronco.position.set(0, -2, -9);
 
 scene.add(meshCopa1, meshCopa2, meshCopa3, meshFruta1, meshFruta2, meshTronco);
 
-const topLight = new THREE.PointLight("#ffd9e3ff", 200, 1000);
+const topLight = new THREE.PointLight("#ffd9e3", 200, 1000);
 topLight.position.y = 5;
 scene.add(topLight);
 

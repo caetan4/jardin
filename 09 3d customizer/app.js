@@ -45,11 +45,11 @@ meshTronco.position.set(0, -2, -9);
 scene.add(meshCopa1, meshCopa2, meshCopa3, meshFruta1, meshFruta2, meshTronco);
 
 
-const topLight = new THREE.PointLight("#7d1833ff", 400, 1000);
+const topLight = new THREE.PointLight("#eaadbd", 400, 1000);
 topLight.position.y = 5;
 scene.add(topLight);
 
-const frontLight = new THREE.PointLight("#34661eff", 100, 1000);
+const frontLight = new THREE.PointLight("#34661e", 100, 1000);
 frontLight.position.set(3, 1, 3);
 scene.add(frontLight);
 
@@ -64,7 +64,7 @@ animate();
 const boton = document.getElementById("cambiarColor");
 
 
-const colores = ["#76dd15", "#f6cf5aff", "#ff6b6b", "#6bafff"];
+const colores = ["#76dd15", "#f6f39e", "#ff6b6b", "#6bafff"];
 let index = 0;
 
 boton.addEventListener("click", () => {
